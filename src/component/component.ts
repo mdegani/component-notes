@@ -5,7 +5,7 @@ export const Component = ({ component }) => {
     ? h("div", { class: "component bg-washed-yellow ba ma2" }, [
         h("div", { class: "bg-washed-blue b bb b--light-blue ma0 mb1 pa1" }, [
           component.name,
-          h("div", { class: "bg-white b b--dark-gray pa0 mt2" }, [
+          h("div", { class: "bg-white b ba b--gray pa0 mt2" }, [
             h("ul", { class: "list pl1" }, [
               component.props.map(prop => {
                 return h("li", { class: "code" }, [
