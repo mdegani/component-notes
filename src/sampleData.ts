@@ -16,6 +16,8 @@ export type Prop = {
   type: string;
 };
 
+export const dummy = (a, b) => a + b;
+
 export const sampleData: FeatureStructure = {
   feature: "List and Details",
   components: [
