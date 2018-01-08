@@ -7,7 +7,7 @@ export type Component = {
   name: string;
   description: string;
   orientation: string;
-  props: Prop[];
+  props: Prop[] | null;
   components: Component[];
 };
 
@@ -15,8 +15,6 @@ export type Prop = {
   property: string;
   type: string;
 };
-
-export const dummy = (a, b) => a + b;
 
 export const sampleData: FeatureStructure = {
   feature: "List and Details",

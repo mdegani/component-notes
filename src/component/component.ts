@@ -1,11 +1,23 @@
 import { h } from "hyperapp";
-import { div, ul, li, span } from "@hyperapp/html";
+import { div, ul, li, span, a } from "@hyperapp/html";
 
-export const Component = ({ component }) => {
+export const Component = ({ component, removeComponent, componentPath }) => {
+  const _componentPath = componentPath;
   return component
     ? div({ class: "component bg-washed-yellow ba ma2" }, [
         div({ class: "bg-washed-blue b bb b--light-blue ma0 mb1 pa1" }, [
-          component.name,
+          div({ class: "flex flex-row justify-between" }, [
+            span({}, component.name),
+            a(
+              {
+                class: "f6 link dim br1 ba ph3 pv2 mb2 dib black",
+                onclick: _ => {
+                  removeComponent(_componentPath);
+                }
+              },
+              "❌"
+            )
+          ]),
           div({ class: "bg-white b ba b--gray pa0 mt2" }, [
             ul({ class: "list pl1" }, [
               component.props.map(prop => {
@@ -19,8 +31,13 @@ export const Component = ({ component }) => {
           ])
         ]),
         div({ class: "flex flex-column justify-between" }, [
-          component.components.map(childComponent => {
-            return h(Component, { component: childComponent }, []);
+          component.components.map((childComponent, componentIndex) => {
+            componentPath = [..._componentPath, componentIndex];
+            return h(
+              Component,
+              { component: childComponent, removeComponent, componentPath },
+              []
+            );
           })
         ])
       ])

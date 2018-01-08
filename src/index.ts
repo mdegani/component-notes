@@ -1,15 +1,28 @@
 import { main } from "@hyperapp/html";
 import { h, app } from "hyperapp";
-import Feature from "./feature/feature";
+import logger from "@hyperapp/logger";
 import { sampleData } from "./sampleData";
+import Feature from "./feature/feature";
+import { removeComponentFunction } from "./logic";
 
 const state = {
   componentsData: sampleData
 };
 
-const actions = {};
+export const actions = {
+  removeComponent: removeComponentFunction
+};
 
 const view = (state, actions) =>
-  main({}, [h(Feature, { componentsData: state.componentsData }, [])]);
+  main({}, [
+    h(
+      Feature,
+      {
+        componentsData: state.componentsData,
+        removeComponent: actions.removeComponent
+      },
+      []
+    )
+  ]);
 
-app(state, actions, view, document.body);
+logger()(app)(state, actions, view, document.body);
