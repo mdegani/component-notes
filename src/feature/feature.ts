@@ -6,7 +6,8 @@ export default ({
   componentsData,
   removeComponent,
   addComponent,
-  toggleEditComponent
+  toggleEditComponent,
+  updateComponentName
 }) =>
   div({}, [
     h1({}, ["Feature:" + componentsData.feature]),
@@ -18,7 +19,8 @@ export default ({
           removeComponent,
           addComponent,
           toggleEditComponent,
-          componentPath: [0]
+          updateComponentName,
+          componentPath: [0],
         },
         []
       );

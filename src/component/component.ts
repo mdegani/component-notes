@@ -7,7 +7,8 @@ export const Component = ({
   removeComponent,
   addComponent,
   toggleEditComponent,
-  componentPath
+  updateComponentName,
+  componentPath,
 }) => {
   const _componentPath = componentPath;
   return component
@@ -58,6 +59,7 @@ export const Component = ({
                 removeComponent,
                 addComponent,
                 toggleEditComponent,
+                updateComponentName,
                 componentPath
               },
               []
