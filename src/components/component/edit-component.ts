@@ -1,6 +1,7 @@
 import { Component } from "./component";
 import { h } from "hyperapp";
 import { div, ul, li, span, a, input } from "@hyperapp/html";
+import { ComponentProps } from "./component";
 
 export const EditComponent = ({
   component,
@@ -9,14 +10,13 @@ export const EditComponent = ({
   toggleEditComponent,
   updateComponentName,
   componentPath
-}) => {
+}: ComponentProps) => {
   const _componentPath = componentPath;
   return component
     ? div({ class: "component bg-washed-yellow ba ma2" }, [
         div({ class: "bg-light-green b bb b--light-blue ma0 mb1 pa1" }, [
           div({ class: "flex flex-row justify-between" }, [
             span({}, [
-              // input({ value: component.name, oninput: e => console.log(e.target.value) }),
               input({
                 value: component.name,
                 oninput: e =>
@@ -37,18 +37,20 @@ export const EditComponent = ({
             ])
           ]),
           div({ class: "bg-white b ba b--gray pa0 mt2" }, [
-            ul({ class: "list pl1" }, [
-              component.props.map(prop => {
+            ul(
+              { class: "list pl1" },
+              component.props!.map(prop => {
                 return li({ class: "code" }, [
                   span({ class: "b" }, [prop.property]),
                   span({ class: "normal" }, [":"]),
                   span({ class: "normal" }, [prop.type])
                 ]);
               })
-            ])
+            )
           ])
         ]),
-        div({ class: "flex flex-column justify-between" }, [
+        div(
+          { class: "flex flex-column justify-between" },
           component.components.map((childComponent, componentIndex) => {
             componentPath = [..._componentPath, componentIndex];
             return h(
@@ -64,7 +66,7 @@ export const EditComponent = ({
               []
             );
           })
-        ])
+        )
       ])
     : div({}, []);
 };

@@ -2,9 +2,10 @@ import {
   removeComponentFunction,
   addComponentFunction,
   toggleEditComponent,
-  updateComponentName,
-  stateType
-} from "./logic";
+  updateComponentName
+} from "./component.logic";
+
+import { stateType } from "./component.types";
 
 const mockState: stateType = {
   componentsData: {

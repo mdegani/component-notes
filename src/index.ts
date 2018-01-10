@@ -1,14 +1,14 @@
 import { main } from "@hyperapp/html";
 import { h, app } from "hyperapp";
 import logger from "@hyperapp/logger";
-import { sampleData } from "./sampleData";
-import Feature from "./feature/feature";
+import { sampleData } from "./guts/componentInitialData";
+import Feature from "./components/feature/feature";
 import {
   removeComponentFunction,
   addComponentFunction,
   toggleEditComponent,
   updateComponentName
-} from "./logic";
+} from "./guts/component.logic";
 
 const state = {
   componentsData: sampleData

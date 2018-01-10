@@ -1,6 +1,17 @@
 import { h } from "hyperapp";
 import { div, h1 } from "@hyperapp/html";
 import { Component } from "../component/component";
+import {
+  FeatureStructureType,
+} from "../../guts/component.types";
+
+type FeatureProps = {
+  componentsData: FeatureStructureType;
+  removeComponent: any;
+  addComponent: any;
+  toggleEditComponent: any;
+  updateComponentName: any;
+};
 
 export default ({
   componentsData,
@@ -8,10 +19,10 @@ export default ({
   addComponent,
   toggleEditComponent,
   updateComponentName
-}) =>
+}: FeatureProps) =>
   div({}, [
     h1({}, ["Feature:" + componentsData.feature]),
-    componentsData.components.map(component => {
+    ...componentsData.components.map(component => {
       return h(
         Component,
         {
@@ -20,7 +31,7 @@ export default ({
           addComponent,
           toggleEditComponent,
           updateComponentName,
-          componentPath: [0],
+          componentPath: [0]
         },
         []
       );

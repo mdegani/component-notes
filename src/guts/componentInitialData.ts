@@ -1,23 +1,6 @@
-export type FeatureStructure = {
-  feature: string;
-  components: Component[];
-};
+import { FeatureStructureType } from "./component.types";
 
-export type Component = {
-  name: string;
-  editing: boolean;
-  description: string;
-  orientation: string;
-  props: Prop[] | null;
-  components: Component[];
-};
-
-export type Prop = {
-  property: string;
-  type: string;
-};
-
-export const sampleData: FeatureStructure = {
+export const sampleData: FeatureStructureType = {
   feature: "List and Details",
   components: [
     {
