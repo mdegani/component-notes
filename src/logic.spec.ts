@@ -2,6 +2,7 @@ import {
   removeComponentFunction,
   addComponentFunction,
   toggleEditComponent,
+  updateComponentName,
   stateType
 } from "./logic";
 
@@ -59,10 +60,16 @@ describe("index actions", () => {
     ).toEqual(3);
   });
   it("toggleEditComponent should toggle editing", () => {
-    console.log(mockState.componentsData.components[0].editing);
     expect(
       toggleEditComponent([0, 0])(mockState).componentsData.components[0]
         .components[0].editing
     ).toEqual(true);
+  });
+  it("updateComponentName should update the component name", () => {
+    expect(
+      updateComponentName({ path: [0, 0], componentName: "new name" })(
+        mockState
+      ).componentsData.components[0].components[0].name
+    ).toEqual("new name");
   });
 });

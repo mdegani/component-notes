@@ -91,3 +91,32 @@ export const toggleEditComponent = (payload: number[]) => (
   };
   return update(state, path);
 };
+
+export const updateComponentName = (payload: {
+  path: number[];
+  componentName: string;
+}) => (state: stateType): stateType => {
+  const path = {
+    componentsData: payload.path.reverse().reduce((acc, cur, idx) => {
+      if (idx === 0) {
+        return {
+          components: {
+            [cur]: {
+              name: {
+                $set: payload.componentName
+              }
+            }
+          }
+        };
+      }
+      return {
+        components: {
+          [cur]: {
+            ...acc
+          }
+        }
+      };
+    }, {})
+  };
+  return update(state, path);
+};

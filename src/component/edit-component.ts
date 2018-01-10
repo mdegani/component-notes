@@ -7,6 +7,7 @@ export const EditComponent = ({
   removeComponent,
   addComponent,
   toggleEditComponent,
+  updateComponentName,
   componentPath
 }) => {
   const _componentPath = componentPath;
@@ -15,7 +16,15 @@ export const EditComponent = ({
         div({ class: "bg-light-green b bb b--light-blue ma0 mb1 pa1" }, [
           div({ class: "flex flex-row justify-between" }, [
             span({}, [
-              input({ value: component.name }),
+              // input({ value: component.name, oninput: e => console.log(e.target.value) }),
+              input({
+                value: component.name,
+                oninput: e =>
+                  updateComponentName({
+                    path: _componentPath,
+                    componentName: e.target.value
+                  })
+              }),
               a(
                 {
                   class: "f6 link dim br1 ba ph3 pv2 mb2 dib black",
@@ -49,6 +58,7 @@ export const EditComponent = ({
                 removeComponent,
                 addComponent,
                 toggleEditComponent,
+                updateComponentName,
                 componentPath
               },
               []
