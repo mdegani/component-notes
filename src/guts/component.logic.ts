@@ -1,13 +1,9 @@
 // import update from "immutability-helper";  // only works when using babel, breaks in unit tests when only using tsc
 const update = require("immutability-helper");
 
-import { FeatureStructure } from "./sampleData";
+import { stateType } from "./component.types";
 
 // TODO, refactor the functions that use paths to nested components, lots of repetition
-
-export type stateType = {
-  componentsData: FeatureStructure;
-};
 
 export const removeComponentFunction = (payload: number[]) => (
   state: stateType
