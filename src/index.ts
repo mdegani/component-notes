@@ -3,14 +3,16 @@ import { h, app } from "hyperapp";
 import logger from "@hyperapp/logger";
 import { sampleData } from "./sampleData";
 import Feature from "./feature/feature";
-import { removeComponentFunction } from "./logic";
+import { removeComponentFunction, addComponentFunction, toggleEditComponent } from "./logic";
 
 const state = {
   componentsData: sampleData
 };
 
 export const actions = {
-  removeComponent: removeComponentFunction
+  removeComponent: removeComponentFunction,
+  addComponent: addComponentFunction,
+  toggleEditComponent
 };
 
 const view = (state, actions) =>
@@ -19,7 +21,9 @@ const view = (state, actions) =>
       Feature,
       {
         componentsData: state.componentsData,
-        removeComponent: actions.removeComponent
+        removeComponent: actions.removeComponent,
+        addComponent: actions.addComponent,
+        toggleEditComponent: actions.toggleEditComponent
       },
       []
     )
