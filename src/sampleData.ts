@@ -5,6 +5,7 @@ export type FeatureStructure = {
 
 export type Component = {
   name: string;
+  editing: boolean;
   description: string;
   orientation: string;
   props: Prop[] | null;
@@ -21,6 +22,7 @@ export const sampleData: FeatureStructure = {
   components: [
     {
       name: "MainComponent",
+      editing: false,
       description: "This is the top level component.",
       orientation: "h",
       props: [
@@ -31,12 +33,14 @@ export const sampleData: FeatureStructure = {
       components: [
         {
           name: "ListComponent",
+          editing: false,
           description: "This is a simple list.",
           orientation: "h",
           props: [{ property: "items", type: "string[]" }],
           components: [
             {
               name: "ListItemComponent",
+              editing: false,
               description: "This item repeats, but we can't see that.",
               orientation: "h",
               props: [{ property: "itemText", type: "string" }],
@@ -46,6 +50,7 @@ export const sampleData: FeatureStructure = {
         },
         {
           name: "DetailsComponent",
+          editing: false,
           description: "Details for the selected item.",
           orientation: "h",
           props: [
